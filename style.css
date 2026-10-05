@@ -1,0 +1,277 @@
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", sans-serif;
+  color: #202134;
+  background: #f4f5fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --ink: #202134;
+  --muted: #9293a6;
+  --accent: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(231, 230, 243, 0.62), transparent 52%),
+    #f4f5fa;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.calculator {
+  width: min(100%, 420px);
+  padding: 27px 27px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 24px 70px rgba(38, 38, 55, 0.10),
+    0 3px 12px rgba(38, 38, 55, 0.04);
+}
+
+.calculator-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculator-label {
+  margin: 0;
+  color: #9293a6;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.calculator-caption {
+  margin: 5px 0 0;
+  color: #292a3d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.calculator-symbol {
+  display: grid;
+  width: 33px;
+  height: 33px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f0f0f3;
+  color: var(--accent);
+  font-size: 19px;
+}
+
+.display {
+  display: flex;
+  min-width: 0;
+  height: 132px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 2px 17px;
+  overflow: hidden;
+  text-align: right;
+}
+
+.display-expression {
+  width: 100%;
+  min-height: 23px;
+  overflow: hidden;
+  color: #9999aa;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display-value {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(42px, 12vw, 54px);
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.display-value.is-compact {
+  font-size: 38px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  display: grid;
+  min-width: 0;
+  height: 56px;
+  place-items: center;
+  border: 0;
+  border-radius: 14px;
+  background: #f4f4f7;
+  color: #252638;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 600;
+  transition: transform 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+}
+
+.key:hover {
+  background: #e9e9ed;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+.key:focus-visible {
+  outline: 3px solid rgba(17, 17, 17, 0.28);
+  outline-offset: 2px;
+}
+
+.key--utility,
+.key--operator {
+  background: #ededf0;
+  color: var(--accent);
+}
+
+.key--utility {
+  font-size: 15px;
+}
+
+.key--utility:hover,
+.key--operator:hover,
+.key--operator.is-selected {
+  background: #dedee3;
+}
+
+.key--operator {
+  font-size: 23px;
+}
+
+.key--zero {
+  grid-column: span 2;
+  justify-items: start;
+  padding-left: 25px;
+}
+
+.key--equals {
+  background: var(--accent);
+  box-shadow: 0 7px 15px rgba(17, 17, 17, 0.18);
+  color: white;
+  font-size: 25px;
+}
+
+.key--equals:hover {
+  background: #303030;
+}
+
+.keyboard-hint {
+  margin: 15px 0 0;
+  color: #9999a8;
+  font-size: 10px;
+  text-align: center;
+}
+
+.keyboard-hint span {
+  margin-right: 4px;
+}
+
+@media (min-width: 1440px) {
+  .key {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    padding: 18px;
+  }
+
+  .calculator {
+    padding: 22px 20px 15px;
+    border-radius: 23px;
+  }
+
+  .display {
+    height: 116px;
+  }
+
+  .keypad {
+    gap: 9px;
+  }
+
+  .key {
+    height: clamp(53px, 14vw, 62px);
+    border-radius: 15px;
+    font-size: 20px;
+  }
+
+  .key--utility {
+    font-size: 15px;
+  }
+
+  .key--operator {
+    font-size: 23px;
+  }
+
+  .key--zero {
+    padding-left: 23px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-shell {
+    padding: 14px;
+  }
+
+  .calculator {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .keypad {
+    gap: 7px;
+  }
+
+  .key {
+    height: 51px;
+    border-radius: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
