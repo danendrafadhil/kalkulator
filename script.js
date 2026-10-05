@@ -146,7 +146,7 @@ function percent() {
 }
 
 function backspace() {
-  if (currentValue === "Error" || waitingForOperand || justCalculated) {
+  if (currentValue === "Error") {
     currentValue = "0";
     waitingForOperand = false;
     justCalculated = false;
@@ -154,6 +154,8 @@ function backspace() {
     currentValue = "0";
   } else {
     currentValue = currentValue.slice(0, -1);
+    waitingForOperand = false;
+    justCalculated = false;
   }
   render();
 }

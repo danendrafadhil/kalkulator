@@ -35,7 +35,10 @@
         </div>
 
         <div class="keypad" id="calculator-keys" aria-label="Tombol kalkulator">
-          <button class="key key--utility" type="button" data-action="clear" aria-label="Hapus semua">AC</button>
+          <div class="keypad-utility-pair">
+            <button class="key key--utility" type="button" data-action="clear" aria-label="Hapus semua">AC</button>
+            <button class="key key--utility key--backspace" type="button" data-action="backspace" aria-label="Hapus satu angka" title="Hapus satu angka">⌫</button>
+          </div>
           <button class="key key--utility" type="button" data-action="sign" aria-label="Ubah tanda">+/−</button>
           <button class="key key--utility" type="button" data-action="percent" aria-label="Persen">%</button>
           <button class="key key--operator" type="button" data-operator="/" aria-label="Bagi">÷</button>
